@@ -14,7 +14,34 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  return [];
+  let expenses = {}; // ek expenses name ka object banaya jismein saare category aur unke total kharche jayenge
+  let categoryPrice = []; // final form jismein result return karna hai
+
+  // ab transactions ke saare objects se unke category aur price extract kar rhe;
+  for (let i = 0; i < transactions.length; i++) {
+    var category = transactions[i].category;
+    var price = transactions[i].price;
+
+    // agar category already expenses mein hai to price usi mein add kar rhe, nhi to category expenses mein enter kar rhe:
+    if (!expenses[category]) {
+      expenses[category] = price;
+    } else {
+      expenses[category] += price;
+    }
+  }
+
+  // final result waale format mein saare category aur unke price enter kar rhe:
+  let categories = Object.entries(expenses);
+  for (let j = 0; j < categories.length; j++) {
+    categoryPrice.push({
+      category: categories[j][0],
+      totalSpent: categories[j][1],
+    });
+  }
+
+  return categoryPrice;
 }
+
+console.log(calculateTotalSpentByCategory(transactions));
 
 module.exports = calculateTotalSpentByCategory;
