@@ -1,3 +1,5 @@
+// done
+
 /*
 Write a function that calculates the time (in seconds) it takes for the JS code to calculate sum from 1 to n, given n as the input.
 Try running it for
